@@ -1,0 +1,18 @@
+survey:
+    resource: "@SurveyBundle/Resources/config/routing.yml"
+    type:     annotation
+    prefix:   /
+
+survey_encuesta:
+    resource: "@SurveyBundle/Resources/config/routing/encuesta.yml"
+    prefix:   /encuesta
+
+survey_pregunta:
+    resource: "@SurveyBundle/Resources/config/routing/pregunta.yml"
+    prefix:   /pregunta
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+

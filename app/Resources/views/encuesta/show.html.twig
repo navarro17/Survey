@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Encuesta</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ Encuesta.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ Encuesta.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Poblacion</th>
+                <td>{{ Encuesta.poblacion }}</td>
+            </tr>
+            <tr>
+                <th>Porciertoerror</th>
+                <td>{{ Encuesta.porciertoError }}</td>
+            </tr>
+            <tr>
+                <th>Nivelconfianza</th>
+                <td>{{ Encuesta.nivelConfianza }}</td>
+            </tr>
+            <tr>
+                <th>Pubdate</th>
+                <td>{% if Encuesta.pubDate %}{{ Encuesta.pubDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('encuesta_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('encuesta_edit', { 'id': Encuesta.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

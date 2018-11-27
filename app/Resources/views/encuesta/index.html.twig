@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Encuestas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Poblacion</th>
+                <th>Porciertoerror</th>
+                <th>Nivelconfianza</th>
+                <th>Pubdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for Encuesta in encuestas %}
+            <tr>
+                <td><a href="{{ path('encuesta_show', { 'id': Encuesta.id }) }}">{{ Encuesta.id }}</a></td>
+                <td>{{ Encuesta.nombre }}</td>
+                <td>{{ Encuesta.poblacion }}</td>
+                <td>{{ Encuesta.porciertoError }}</td>
+                <td>{{ Encuesta.nivelConfianza }}</td>
+                <td>{% if Encuesta.pubDate %}{{ Encuesta.pubDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('encuesta_show', { 'id': Encuesta.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('encuesta_edit', { 'id': Encuesta.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('encuesta_new') }}">Create a new Encuesta</a>
+        </li>
+    </ul>
+{% endblock %}
